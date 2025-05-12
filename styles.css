@@ -1,0 +1,813 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0}body{font-family:Helvetica,arial,freesans,clean,sans-serif;font-size:14px;line-height:1.6;color:#333;background-color:#fff;padding:20px;max-width:960px;margin:0 auto}body>*:first-child{margin-top:0 !important}body>*:last-child{margin-bottom:0 !important}p,blockquote,ul,ol,dl,table,pre{margin:15px 0}h1,h2,h3,h4,h5,h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased}h1 tt,h1 code,h2 tt,h2 code,h3 tt,h3 code,h4 tt,h4 code,h5 tt,h5 code,h6 tt,h6 code{font-size:inherit}h1{font-size:28px;color:#000}h2{font-size:24px;border-bottom:1px solid #ccc;color:#000}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{color:#777;font-size:14px}body>h2:first-child,body>h1:first-child,body>h1:first-child+h2,body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child{margin-top:0;padding-top:0}a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6{margin-top:0;padding-top:0}h1+p,h2+p,h3+p,h4+p,h5+p,h6+p{margin-top:10px}a{color:#4183c4;text-decoration:none}a:hover{text-decoration:underline}ul,ol{padding-left:30px}ul li>:first-child,ol li>:first-child,ul li ul:first-of-type,ol li ol:first-of-type,ul li ol:first-of-type,ol li ul:first-of-type{margin-top:0}ul ul,ul ol,ol ol,ol ul{margin-bottom:0}dl{padding:0}dl dt{font-size:14px;font-weight:bold;font-style:italic;padding:0;margin:15px 0 5px}dl dt:first-child{padding:0}dl dt>:first-child{margin-top:0}dl dt>:last-child{margin-bottom:0}dl dd{margin:0 0 15px;padding:0 15px}dl dd>:first-child{margin-top:0}dl dd>:last-child{margin-bottom:0}pre,code,tt{font-size:12px;font-family:Consolas,"Liberation Mono",Courier,monospace}code,tt{margin:0;padding:0;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre>code{margin:0;padding:0;white-space:pre;border:0;background:transparent}pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}pre code,pre tt{background-color:transparent;border:0}blockquote{border-left:4px solid #DDD;padding:0 15px;color:#777}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:0}hr{clear:both;margin:15px 0;height:0;overflow:hidden;border:0;background:transparent;border-bottom:4px solid #ddd;padding:0}table th{font-weight:bold}table th,table td{border:1px solid #ccc;padding:6px 13px}table tr{border-top:1px solid #ccc;background-color:#fff}table tr:nth-child(2n){background-color:#f8f8f8}img{max-width:100%}
+        #container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+            background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+            min-height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, "Helvetica Neue", Arial, sans-serif;
+
+        }
+
+        body_time {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5); /* 渐变背景 */
+            color: #fff; /* 字体颜色 */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        #clock {
+            font-size: 64px; /* 增大字体 */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* 字体阴影 */
+            animation: pulse 1s infinite; /* 动画效果 */
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+#app {  
+    background: white;  
+    padding: 20px;  
+    border-radius: 8px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}  
+
+input, select, button {  
+    display: block;  
+    margin: 10px 0;  
+    padding: 10px;  
+    width: 100%;  
+    box-sizing: border-box;  
+}
+
+  /* 背景图片样式 */
+  body {
+    background-image: url('background.jpg');
+    /* 背景图片路径 */
+    background-size: cover;
+    /* 图片适应屏幕大小 */
+    background-repeat: repeat;
+    background-size: auto;                   /* 原尺寸；如想缩放可改 cover/contain */
+    background-position: top left;           /* 从左上开始平铺 */
+    /* 居中显示 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    /* 占满整个视口高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fancy-font {
+    font-family: 'Amatic SC', cursive;
+    /* cursive等用于回退 */
+  }
+
+
+  /* 背景遮罩 */
+  .modal-backdrop {
+    display: none;
+    /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 过渡动画可选 */
+    z-index: 999;
+  }
+
+  .modal-backdrop.active {
+    display: block;
+  }
+
+/* 调整模态窗口基础样式 */  
+.modal {  
+  display: none; /* 默认隐藏 */  
+  position: fixed;  
+  top: 50%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+  z-index: 1000;  
+  width: 60%; /* 调整宽度 */  
+  max-width: 800px; /* 调整最大宽度 */  
+  max-height: 80vh; /* 可选：调整最大高度 */  
+  overflow-y: auto;  
+}  
+
+/* 模态内容样式 */  
+.modal-content {  
+  width: 100%;  
+  padding: 10px; /* 调整内边距，这样内容会紧凑一些 */  
+  background-color: #fff;  
+  border-radius: 8px;  
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);  
+}  
+
+  /* 模态窗口内表单元素自适应 */
+  #firefighterForm {
+    width: 100%;
+  }
+
+  /* 确保行占满空间 */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* 列元素拉伸以占满空间 */
+  .col-md-4,
+  .col-md-6,
+  .col-md-12 {
+    flex-grow: 1;
+    transition: all 0.3s ease;
+    /* 添加过渡效果使尺寸变化更平滑 */
+  }
+
+  /* 输入框自动填充可用空间 */
+  .form-control,
+  .form-select {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+  }
+
+  /* 标签变大以适应大屏幕 */
+  @media (min-width: 1200px) {
+    .form-label {
+      font-size: 1.1rem;
+    }
+
+    .form-control,
+    .form-select {
+      font-size: 1.05rem;
+      padding: 10px 15px;
+      min-height: 45px;
+    }
+
+    /* 按钮在大屏幕上变大 */
+    .modal-footer .button {
+      padding: 10px 25px;
+      font-size: 1.1rem;
+    }
+  }
+
+  /* 更大屏幕上进一步增大字体和间距 */
+  @media (min-width: 1600px) {
+    .form-label {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-control,
+    .form-select {
+      font-size: 1.1rem;
+      padding: 12px 18px;
+      min-height: 50px;
+    }
+
+    .mb-3 {
+      margin-bottom: 1.5rem !important;
+    }
+
+    /* 增大模态标题 */
+    .modal-header h2 {
+      font-size: 2.2rem;
+    }
+
+    /* 增大关闭按钮 */
+    #closeModal {
+      font-size: 2rem;
+    }
+  }
+
+  /* 确保按钮栏始终占满宽度 */
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    width: 100%;
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+
+  /* 超宽屏幕进一步扩大元素 */
+  @media (min-width: 2000px) {
+    .modal {
+      max-width: 1800px;
+      /* 超宽屏幕允许更大模态框 */
+    }
+
+    .row {
+      gap: 20px;
+      /* 增加行内元素间距 */
+    }
+  }
+
+  /* 确保模态窗口内容有足够空间 */
+  .modal-content {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 滚动条美化 (可选) */
+  .modal::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  .modal::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  .modal::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .modal.active {
+    display: block;
+  }
+
+  /* 模态内容区 */
+  .modal-content {
+    background-color: #f7f7f7;
+    /* 背景带点浅灰 */
+    border: 3px solid #888;
+    /* 边框线加粗 */
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-header {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .modal-header h2 {
+    margin: 0;
+  }
+
+  .modal-header span {
+    font-size: 1.4rem;
+  }
+
+  .modal-body {
+    margin: 16px 0;
+    max-height: 70vh;
+    /* 避免内容过多时超出屏幕 */
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    border-top: 2px solid #ccc;
+    padding-top: 8px;
+    margin-top: 8px;
+    text-align: right;
+    /* 简单的右对齐 */
+  }
+
+  /* 表单样式 */
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+  }
+
+  /* 通用按钮样式 */
+  .button {
+    padding: 10px 20px;
+    /* 幅度内边距 */
+    border: none;
+    /* 去掉边框 */
+    border-radius: 5px;
+    /* 圆角 */
+    background-color: #007bff;
+    /* 背景颜色 */
+    color: white;
+    /* 字体颜色 */
+    font-size: 16px;
+    /* 字体大小 */
+    cursor: pointer;
+    /* 鼠标指针 */
+    transition: background-color 0.3s;
+    /* 过渡效果 */
+  }
+
+  /* 按钮悬停样式 */
+  .button:hover {
+    background-color: #0056b3;
+    /* 悬停时的背景颜色 */
+  }
+
+  .button-primary {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .button-primary:hover {
+    background-color: #218838;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+  }
+
+  .button-secondary {
+    background-color: #6c757d;
+    color: #fff;
+  }
+
+  .button-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 0 8px rgba(108, 117, 125, 0.2);
+  }
+
+  /* 响应式设计 */
+  @media screen and (max-width: 768px) {
+    .modal {
+      width: 95%;
+      padding: 15px;
+      max-height: 85vh;
+      /* 适当减少最大高度以适应移动设备 */
+    }
+
+    .modal-header h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* 全局容器 */
+  .container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px 0;
+    /* 可以根据需要添加背景或阴影 */
+  }
+
+  .container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2.0rem;
+    font-size: 50px;
+  }
+
+  .container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 30px;
+  }
+
+
+  /* 三个 section 的通用样式 */
+  section {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Excel模板上传表单 & 搜索表单基础样式 */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    /* 当屏幕宽度较小，自动换行 */
+    align-items: center;
+    gap: 0.5rem;
+    /* 表单元素之间的间距 */
+  }
+
+  label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    flex: 1;
+    /* 让输入框或选择框能够灵活扩展宽度 */
+    min-width: 100px;
+    /* 避免过小 */
+  }
+
+  input[type="file"] {
+    flex: none;
+    /* 上传按钮大小通常固定 */
+  }
+
+  /* 分割线美化 */
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
+  }
+
+
+  .users-table {
+    width: 100%;
+    /* 表格宽度占满父容器 */
+    border-collapse: collapse;
+    /* 去掉单元格间的间隙 */
+    margin-top: 20px;
+    /* 表格顶部留空 */
+    background: #fff;
+    /* 表格背景色 */
+    border-radius: 4px;
+    /* 表格圆角 */
+    overflow: hidden;
+    /* 防止溢出 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* 添加阴影 */
+  }
+
+  .users-table th,
+  .users-table td {
+    border: 1px solid #ddd;
+    /* 单元格边框颜色 */
+    padding: 12px;
+    /* 单元格内边距 */
+    text-align: center;
+    /* 水平居中 */
+    vertical-align: middle;
+    /* 垂直居中 */
+    font-size: 14px;
+    /* 字体大小 */
+    color: #333;
+    /* 字体颜色 */
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .users-table th {
+    background-color: #f1dbb5;
+    /* 表头背景色 */
+    font-weight: bold;
+    /* 表头加粗 */
+    color: #333;
+    /* 表头字体颜色 */
+  }
+
+  .users-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+    /* 偶数行背景色 */
+  }
+
+  .users-table tr:hover {
+    background-color: #f1f1f1;
+    /* 鼠标悬停时的背景色 */
+  }
+
+  /* 错误提示样式 */
+  .error {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+
+  /* 搜索表单样式 */
+  .search-form input,
+  .search-form select {
+    margin-right: 10px;
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    font-size: 16px;  /* 这里指定新的字体大小 */
+  }
+
+  .btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-delete:hover {
+    background-color: #d32f2f;
+  }
+
+  .btn-change {
+    background-color: #f49236;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-change:hover {
+    background-color: #f49236;
+  }
+
+  .btn-button {
+    background-color: #365cf4;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-button:hover {
+    background-color: #365cf4;
+  }
+
+  /* 报表相关样式 */
+  .date-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+
+  .print-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+  }
+
+  .print-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .print-header h1 {
+    margin-bottom: 10px;
+  }
+
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .print-table th {
+    background-color: #f0f0f0;
+  }
+
+  .print-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    .print-container,
+    .print-container * {
+      visibility: visible;
+    }
+
+    .print-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 0;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  /* 打印专用样式 */
+  @media print {
+
+    /* 基本打印设置 */
+    @page {
+      size: auto;
+      margin: 10mm 10mm 10mm 10mm;
+      /* 减小页面边距 */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+
+    /* 隐藏非打印元素 */
+    .no-print {
+      display: none !important;
+    }
+
+    /* 控制打印容器 */
+    .print-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      page-break-after: avoid;
+      /* 防止容器后自动分页 */
+    }
+
+    /* 控制表格打印 */
+    table {
+      width: 100% !important;
+      page-break-inside: auto;
+      border-collapse: collapse;
+    }
+
+    tr,
+    td,
+    th {
+      page-break-inside: avoid;
+      /* 尽量避免行内分页 */
+    }
+
+    /* 如果按钮在容器中，可以为容器添加样式 */
+    .print-footer .no-print {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      /* 按钮之间的间距 */
+      margin-bottom: 10px;
+      /* 底部留一些空间 */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .action-buttons {
+      display: flex !important;
+      justify-content: flex-end !important;
+      gap: 10px;
+      width: 100%;
+    }
+
+    /* 重置可能影响对齐的样式 */
+    .print-footer {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .no-print {
+      width: 100%;
+    }
+
+
+    /* 避免元素产生无意义的分页 */
+    * {
+      overflow: visible !important;
+    }
+
+  /* 确保filter-group不会影响栅格布局 */  
+  .filter-group {  
+    width: 100%;  
+    padding: 0;  
+    margin: 0;  
+  }  
+  
+  /* 确保每个row是flex布局并且填充整个宽度 */  
+  .filter-group .row {  
+    display: flex;  
+    width: 100%;  
+    margin-left: 0;  
+    margin-right: 0;  
+  }  
+  
+  /* 关键修复：确保col-md-4实际占用33.33%的宽度 */  
+  .filter-group .col-md-4 {  
+    width: 33.33%;  
+    flex: 0 0 33.33%;  
+    max-width: 33.33%;  
+    box-sizing: border-box;  
+  }  
+  
+  /* 确保表单元素填充整个列宽 */  
+  .filter-group .form-control {  
+    width: 100%;  
+    box-sizing: border-box;  
+  }  
+  
+  /* 确保标签不会影响布局 */  
+  .filter-group label {  
+    display: block;  
+    width: 100%;  
+    box-sizing: border-box;  
+  }  
+  
+  /* 如果需要，可以添加媒体查询以确保在小屏幕上正确显示 */  
+  @media (max-width: 768px) {  
+    .filter-group .col-md-4 {  
+      width: 100%;  
+      flex: 0 0 100%;  
+      max-width: 100%;  
+    }  
+  }  
+
+  }
+  
+    /* ========== 新增：为表格外层加一个固定高度+滚动条容器 ========== */  
+    .table-container {  
+      max-height: 1200px; /* 根据实际需求调整表格容器的最大高度*/  
+      overflow-y: auto;  /* 当内容超过最大高度时出现垂直滚动条*/  
+      border: 1px solid #ccc;  
+      margin: 16px 0;  
+    }  
+    /* 搜索区域 */  
+    .search-container {  
+      margin-bottom: 12px;  
+    }  
+    .search-container input {  
+      width: 200px;  
+      padding: 6px;  
+    }  
+    .search-container button {  
+      padding: 6px 12px;  
+      margin-left: 8px;  
+      cursor: pointer;  
+    }  
